@@ -9,6 +9,9 @@
   overflow: unset;
   text-decoration: none;
 }
+.span-cmd{
+  color: green;
+}
 body{
   /* антикопировка */
   -webkit-user-select: none; /* Safari */
