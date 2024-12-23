@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Header from "../components/Header";
 
 function Profile() {
   const [users, setUsers] = useState("");
@@ -19,10 +18,29 @@ function Profile() {
     });
   };
   return (
+    
     <div>
-      <Header />
-      {users?.login}
-      <button onClick={DelteUser}>LogOut</button>
+      <header>
+    <div className="header-box">
+        <div className="header-left">
+            <img src="/Logo.png" alt="" />
+        </div>
+        <div className="header-center">
+            <nav>
+                <ul>
+                    <Link to={"/home"}><a href="">Home</a></Link>
+                    <Link to={"/about"}><a href="">About Me</a></Link>
+                    <Link to={"/services"}><a href="">Services</a></Link>
+                    <Link to={"/portfolio"}><a href="">Portfolio</a></Link>
+                </ul>
+            </nav>
+        </div>
+        <div className="header-right">
+        {users?.login}
+        <button onClick={DelteUser}>LogOut</button>
+        </div>
+    </div>
+</header>
     </div>
   );
 }

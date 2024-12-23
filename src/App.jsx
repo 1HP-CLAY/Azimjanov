@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
-import Header from "./components/Header";
+import Header from "./components/Header"
 import Erorr from "./Pages/Erorr";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -22,7 +22,7 @@ function App() {
     <>
 <div className="App">
   <BrowserRouter>
-
+<Header />
   <Routes> 
   <Route path="/" element={<Register />} />
   <Route path="/home" element={<Home />} />
