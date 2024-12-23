@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Header from "../components/Header";
 
 function Profile() {
   const [users, setUsers] = useState("");
@@ -19,6 +20,7 @@ function Profile() {
   };
   return (
     <div>
+      <Header />
       {users?.login}
       <button onClick={DelteUser}>LogOut</button>
     </div>

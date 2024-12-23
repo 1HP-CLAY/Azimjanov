@@ -12,6 +12,7 @@ function Setting() {
       method: "DELETE",
     });
   };
+<div className="aa">  <Header /></div>
   return (
     <div>
       <span>{users?.length}</span>

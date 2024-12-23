@@ -35,7 +35,7 @@ function Register() {
       <br />
       <div className="wrapper">
 <form action="" onSubmit={senData} className="form">
-<span>{users?.length}</span>
+<span>Текущие пользователи на сайте: {users?.length}</span>
     <div className="flex-column">
       <label>New Login </label></div>
     <div className="inputForm">
