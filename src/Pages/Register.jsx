@@ -1,41 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function App() {
+function Register() {
   const [login, setlogin] = useState("");
   const [parol, setParol] = useState("");
   const [users, setUsers] = useState("");
   const navigate = useNavigate();
-  const senData = (e) => {
-    e.preventDefault();
+  useEffect(() => {
     fetch("https://7217f53e6149482b.mokky.dev/user")
       .then((res) => res.json())
       .then((json) => setUsers(json));
-    for (let i = 0; i < users.length; i++) {
-      if (login == users[i].login) {
-        alert("Mavjud");
-        navigate(`/profile/${users[i].id}`);
-      } else {
-        alert("Mavjud Emas");
-      }
-    }
+  }, []);
+
+  const senData = (e) => {
+    e.preventDefault();
+    const value = { login, parol };
+    fetch("https://7217f53e6149482b.mokky.dev/user", {
+      method: "POST",
+      body: JSON.stringify(value),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        navigate("/login");
+      })
+      .catch((err) => {
+        alert(`Malumot yuborilmadi`);
+      });
   };
-
-
-  
   return (
-<div className="wrapper">
+    <>
+  
+      <br />
+      <div className="wrapper">
 <form action="" onSubmit={senData} className="form">
-
+<span>{users?.length}</span>
     <div className="flex-column">
-      <label>Login </label></div>
+      <label>New Login </label></div>
     <div className="inputForm">
     <i class='bx bxs-user'></i>
     
       <input value={login} onChange={(e) => setlogin(e.target.value)} type="login" className="input" placeholder="Enter your Login" />
     </div>
     <div className="flex-column">
-      <label>Password </label></div>
+      <label>New Password </label></div>
     <div className="inputForm">
     <i class='bx bxs-lock-alt' ></i>
       <input value={parol} onChange={(e) => setParol(e.target.value)} type="password" className="input" placeholder="Enter your Password" />
@@ -48,7 +57,7 @@ function App() {
       </div>
       <span className="span">Forgot password?</span>
     </div>
-    <button className="button-submit">Sign In</button>
+    <button className="button-submit">Register</button>
     <p className="p">Don't have an account? <span className="span">Sign Up</span>
     </p><p className="p line">Or With</p>
     <div className="flex-row">
@@ -74,7 +83,8 @@ function App() {
         Apple 
       </button></div></form>
 </div>
+    </>
   );
 }
 
-export default App;
+export default Register;
